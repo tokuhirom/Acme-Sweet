@@ -22,6 +22,8 @@ use Log::Minimal;
 use autovivification;
 use JSON;
 use Data::Dumper;
+use Class::Load qw/:all/;
+use Perl6::Perl qw/p perl/;
 
 STDOUT->autoflush(1);
 STDERR->autoflush(1);
@@ -37,8 +39,9 @@ our %EXPORT_TAGS = (
     list   => [qw/min max uniq first reduce sum shuffle/],
     time   => [qw/localtime gmtime/],
     json   => [qw/encode_json decode_json/],
-    debug  => [qw/p Dumper/],
+    debug  => [qw/p perl/],
     core   => [qw/stat caller/],
+    load   => [qw/is_class_loaded load_class load_optional_class try_load_class/],
 
     web    => [qw/html_escape html_unescape uri_escape uri_unescape/],
     log    => [qw/infof warnf critf ddf/],
@@ -47,12 +50,6 @@ our %EXPORT_TAGS = (
 our @EXPORT = map { @$_ } @EXPORT_TAGS{qw/encode file list debug core time/};
 $EXPORT_TAGS{all} = (map { @$_ } values %EXPORT_TAGS);
 our @EXPORT_OK = $EXPORT_TAGS{all};
-
-sub p(@) {
-    local $Data::Dumper::Terse = 1;
-    local $Data::Dumper::Indent = 0;
-    print Dumper(@_)
-}
 
 sub import {
     my ($class, @args) = @_;
@@ -112,6 +109,8 @@ Acme::Sweet is
 =head1 TODO
 
     autoboxing
+    lazy loading
+    testing
 
 =head1 AUTHOR
 

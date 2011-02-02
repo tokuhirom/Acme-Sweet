@@ -18,6 +18,8 @@ requires
 	'Time::y2038' => 0,
 	'Log::Minimal' => 0,
 	'autovivification' => 0,
+	'Class::Load' => 0,
+	'Perl6::Perl' => 0,
 	;
 
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
