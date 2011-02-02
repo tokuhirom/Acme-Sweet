@@ -4,11 +4,21 @@ use Module::Install::AuthorTests;
 name 'Acme-Sweet';
 all_from 'lib/Acme/Sweet.pm';
 
-# requires '';
-# requires 'Exporter' => 5.63; # use Exporter 'import';
-# requires 'Plack' =>  0.9949;
-
-
+requires
+	'Exporter' => 5.63, # use Exporter 'import';
+	'Text::Xslate' => 0,
+	'HTML::Entities' => 0,
+	'URI::Escape' => 0,
+	'Time::Piece' => 0,
+	'indirect' => 0.23,
+	'Smart::Args' => 0,
+	'parent' => 0,
+	'true' => 0,
+	'File::stat' => 0,
+	'Time::y2038' => 0,
+	'Log::Minimal' => 0,
+	'autovivification' => 0,
+	;
 
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
 test_requires 'Test::More' => 0.96; # done_testing, subtest
